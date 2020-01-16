@@ -1,0 +1,60 @@
+------
+#Tasks
+------
+
+-Login:
+	-Redirect depend on role.
+	-Login by email instead of Name.
+	
+-Admin:
+	Globally Its okay !
+	-Branche => Locale
+
+-Manager:
+	-Create and manage Drivers
+
+
+-Staff:
+	-Create Dashboard
+	
+-Driver:
+	-Create The module
+	-Form => {
+			-Name
+			-Phone
+			-Email
+			-Ville
+			-Address
+			-Matricule
+			-Identity Number
+			-RIB
+			-Pwd
+	}
+	
+-Courier:
+	-Etats/Status
+			=> { 
+					*** En atttente de ramssage (on create) ***
+					Ramassée
+					En route
+					Livré
+					Annule
+					Injoignable
+					Pas de réponse
+					Refusé
+					Retour Livré
+
+				}
+	-Create Form
+		=> {
+			- *** Display sender infos only for manager ***
+			- *** Fee calc depened on city (not on Qty) ***
+			- *** Hidden input with the default status (en attente de ramassage) ***
+		}
+	-Track it on the front by code and barcode
+	
+
+
+Note: Tasks marked by *** Task ***,  mean its done :)	
+Demo: https://colisapp.elbasri.net
+				
