@@ -91,13 +91,13 @@
         <div class="row">
         <div class="col-md-6 col-lg-4">
                 <div class="c-box">
-                    <p class="count">{{ $gs->departure_currier }}</p><span>+</span>
+                    <p class="count">{{ $gs->departure_colis }}</p><span>+</span>
                     <h3>{{__('Parcels Departure')}}</h3>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="c-box">
-                    <p class="count">{{ $gs->upcoming_currier }}</p><span>+</span>
+                    <p class="count">{{ $gs->upcoming_colis }}</p><span>+</span>
                     <h3>{{__('Upcoming Parcels')}}</h3>
                 </div>
             </div>

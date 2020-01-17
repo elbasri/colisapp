@@ -9,7 +9,7 @@ use Intervention\Image\Facades\Image;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-use App\Model\CurrierInfo;
+use App\Model\ColisInfo;
 use DB;
 
 class BranchManagerController extends Controller {
@@ -178,62 +178,62 @@ class BranchManagerController extends Controller {
 
     public function branchIncome(Request $request, $branch) {
 
-        $staff = $request->staff_id;
+        $customer = $request->customer_id;
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
-        if (!empty($start_date) && !empty($end_date) && !empty($staff)) {
-            $branchIncomeList = CurrierInfo::where('payment_branch_id', $branch)
-                            ->where(function($q) use($start_date, $end_date, $staff) {
+        if (!empty($start_date) && !empty($end_date) && !empty($customer)) {
+            $branchIncomeList = ColisInfo::where('payment_branch_id', $branch)
+                            ->where(function($q) use($start_date, $end_date, $customer) {
                                 $q->whereBetween('payment_date', [$start_date, $end_date])
-                                ->where('payment_receiver_id', $staff);
+                                ->where('payment_receiver_id', $customer);
                             })
                             ->select(DB::raw("*,SUM(payment_balance) as total_balance"))
                             ->groupBy('payment_date')->paginate(10);
         } elseif (!empty($start_date) && !empty($end_date)) {
-            $branchIncomeList = CurrierInfo::where('payment_branch_id', $branch)
+            $branchIncomeList = ColisInfo::where('payment_branch_id', $branch)
                             ->where(function($q) use($start_date, $end_date) {
                                 $q->whereBetween('payment_date', [$start_date, $end_date]);
                             })
                             ->select(DB::raw("*,SUM(payment_balance) as total_balance"))
                             ->groupBy('payment_date')->paginate(10);
-        } elseif (!empty($staff)) {
-            $branchIncomeList = CurrierInfo::where('payment_branch_id', $branch)
-                            ->where(function($q) use($staff) {
-                                $q->where('payment_receiver_id', $staff);
+        } elseif (!empty($customer)) {
+            $branchIncomeList = ColisInfo::where('payment_branch_id', $branch)
+                            ->where(function($q) use($customer) {
+                                $q->where('payment_receiver_id', $customer);
                             })
                             ->select(DB::raw("*,SUM(payment_balance) as total_balance"))
                             ->groupBy('payment_date')->paginate(10);
         } else {
-            $branchIncomeList = CurrierInfo::where('payment_branch_id', $branch)
+            $branchIncomeList = ColisInfo::where('payment_branch_id', $branch)
                             ->select(DB::raw("*,SUM(payment_balance) as total_balance"))
                             ->groupBy('payment_date')->paginate(10);
         }
 
         $branchName = Branch::find($branch);
 
-        $branchStaff = User::where([['branch_id', $branch], ['type', 'Staff']])->get();
+        $branchCustomer = User::where([['branch_id', $branch], ['type', 'Customer']])->get();
 
-        return view('admin.companyIncome.branchIncomeList', compact('branchIncomeList', 'branchName', 'branch', 'branchStaff'));
+        return view('admin.companyIncome.branchIncomeList', compact('branchIncomeList', 'branchName', 'branch', 'branchCustomer'));
     }
 
     public function dateWiseBranchIncome($branch, $date) {
-        $branchIncomeList = CurrierInfo::where('payment_branch_id', $branch)->whereDate('payment_date', $date)
+        $branchIncomeList = ColisInfo::where('payment_branch_id', $branch)->whereDate('payment_date', $date)
                         ->select(DB::raw("*,SUM(payment_balance) as total_balance"))
                         ->groupBy('payment_receiver_id')->paginate(10);
         $branchName = Branch::find($branch);
         return view('admin.companyIncome.dateIncomeList', compact('branchIncomeList', 'branchName', 'branch'));
     }
 
-    public function staffWiseBranchIncome($branch, $staff) {
+    public function customerWiseBranchIncome($branch, $customer) {
 
-        $branchIncomeList = CurrierInfo::where([['payment_branch_id', $branch], ['payment_receiver_id', $staff]])
+        $branchIncomeList = ColisInfo::where([['payment_branch_id', $branch], ['payment_receiver_id', $customer]])
                         ->select(DB::raw("*,SUM(payment_balance) as total_balance"))
                         ->groupBy('payment_date')->paginate(10);
 
         $branchName = Branch::find($branch);
 
-        return view('admin.companyIncome.staffIncomeList', compact('branchIncomeList', 'branchName', 'branch'));
+        return view('admin.companyIncome.customerIncomeList', compact('branchIncomeList', 'branchName', 'branch'));
     }
 
 }

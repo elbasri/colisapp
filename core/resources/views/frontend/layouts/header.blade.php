@@ -69,7 +69,7 @@
                                 <a class="nav-link active" id="home" href="{{ route('front.index') }}">{{__('Home')}}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " id="qurrierSearch" href="{{ route('front.index') }}#currier-search">{{__('Parcel Search')}}</a>
+                                <a class="nav-link " id="qurrierSearch" href="{{ route('front.index') }}#colis-search">{{__('Parcel Search')}}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " id="aboutus" href="{{ route('front.aboutus') }}">{{__('About Us')}}</a>

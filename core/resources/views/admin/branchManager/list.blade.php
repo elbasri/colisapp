@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ route('admin.branch.staff',$branchManager->branch_id) }}"><button class="btn btn-primary btn-sm"> <i class="fa fa-eye"></i>{{__('Staff')}} </button></a>
+                            <a href="{{ route('admin.branch.customer',$branchManager->branch_id) }}"><button class="btn btn-primary btn-sm"> <i class="fa fa-eye"></i>{{__('Customer')}} </button></a>
                         </td> 
                     </tr>
                     @empty

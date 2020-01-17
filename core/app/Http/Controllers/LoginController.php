@@ -24,7 +24,7 @@ class LoginController extends Controller {
             return redirect('admin/dashboard')->withSuccess('You are successfully logged in');
         }
         else if (Auth::attempt(['name' => $request->get('name'), 'password' => $request->get('password'), 'status' => 'Active'])) {
-            return redirect('staff/dashboard')->withSuccess('You are successfully logged in');
+            return redirect('customer/dashboard')->withSuccess('You are successfully logged in');
         }
         else {
             //logout

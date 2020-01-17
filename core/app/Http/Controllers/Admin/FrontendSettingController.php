@@ -126,12 +126,12 @@ class FrontendSettingController extends Controller {
         return back()->withSuccess('Information updated successfully');
     }
 
-    public function curriercount() {
+    public function coliscount() {
         $setting = GeneralSetting::first();
-        return view('admin.frontendSetting.curriercount', compact('setting'));
+        return view('admin.frontendSetting.coliscount', compact('setting'));
     }
 
-    public function curriercountUpdate(Request $request, GeneralSetting $setting) {
+    public function coliscountUpdate(Request $request, GeneralSetting $setting) {
 
         $data = $request->all();
         $setting->update($data);
@@ -375,14 +375,14 @@ class FrontendSettingController extends Controller {
         return back()->withSuccess("Information deleted successfully");
     }
 
-    public function searchcurrier() {
+    public function searchcolis() {
         $setting = GeneralSetting::first();
-        return view('admin.frontendSetting.searchCurrier', compact('setting'));
+        return view('admin.frontendSetting.searchColis', compact('setting'));
     }
 
-    public function searchcurrierUpdate(Request $request) {
+    public function searchcolisUpdate(Request $request) {
         $request->validate([
-            'search_currier_title' => 'required|max:255',
+            'search_colis_title' => 'required|max:255',
         ]);
         $id = $request->get('id');
         $setting = GeneralSetting::find($id);

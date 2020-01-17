@@ -75,7 +75,7 @@ use RegistersUsers;
                     'address' => $data['address'],
                     'image' => "",
                     'status' => "Inactive",
-                    'type' => "Staff",
+                    'type' => "Customer",
                     'branch_id' => 1,
                     'password' => Hash::make($data['password']),
                     

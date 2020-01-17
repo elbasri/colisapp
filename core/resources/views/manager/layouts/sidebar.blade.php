@@ -3,21 +3,21 @@
         <li class="active"><a href="{{ url('home') }}"><i class="fa fa-fw fa-tachometer-alt"></i> {{__('Dashboard')}}</a></li>
         <li id="allbranch"><a href="{{ route('manager.branchlist') }}"><i class="fa fa-fw fa-plus"></i> {{__('All Branch')}}</a></li>
         <li>
-            <a href="#branchStaff" data-toggle="collapse">
-                <i class="fa fa-fw fa-user"></i> {{__('Branch Staff Info')}}
+            <a href="#branchCustomer" data-toggle="collapse">
+                <i class="fa fa-fw fa-user"></i> {{__('Branch Customer Info')}}
             </a>
-            <ul id="branchStaff" class="list-unstyled collapse">
-                <li><a href="{{ route('branchstaff.create') }}"><i class="far fa-circle"></i> {{__('Add New Staff')}}</a></li>
-                <li><a href="{{ route('branchstaff.index') }}"><i class="far fa-circle"></i> {{__('Manage Staff')}}</a></li>
+            <ul id="branchCustomer" class="list-unstyled collapse">
+                <li><a href="{{ route('branchcustomer.create') }}"><i class="far fa-circle"></i> {{__('Add New Customer')}}</a></li>
+                <li><a href="{{ route('branchcustomer.index') }}"><i class="far fa-circle"></i> {{__('Manage Customer')}}</a></li>
             </ul>
         </li>
         <li>
-            <a href="#currierInfo" data-toggle="collapse">
-                <i class="fa fa-fw fas fa-list"></i> {{__('Courier Info')}}
+            <a href="#colisInfo" data-toggle="collapse">
+                <i class="fa fa-fw fas fa-list"></i> {{__('Colis Info')}}
             </a>
-            <ul id="currierInfo" class="list-unstyled collapse">
-                <li><a href="{{ route('departure.manager') }}"><i class="far fa-circle"></i> {{__('Departure Courier')}}</a></li>
-                <li><a href="{{ route('upcoming.manager') }}"><i class="far fa-circle"></i> {{__('Upcoming Courier')}}</a></li>
+            <ul id="colisInfo" class="list-unstyled collapse">
+                <li><a href="{{ route('departure.manager') }}"><i class="far fa-circle"></i> {{__('Departure Colis')}}</a></li>
+                <li><a href="{{ route('upcoming.manager') }}"><i class="far fa-circle"></i> {{__('Upcoming Colis')}}</a></li>
             </ul>
         </li>
 

@@ -1,13 +1,13 @@
 @extends('admin.layouts.master')
 @section('content')
 <div class="content p-4">
-    <h2 class="mb-4" style="text-transform: uppercase;">{{__('Staff List')}} 
+    <h2 class="mb-4" style="text-transform: uppercase;">{{__('Customer List')}} 
     </h2>
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12  mb-2">
-                    <form method="GET" action="{{ route('admin.branch.staff',$branch) }}" class="form-inline float-right">
+                    <form method="GET" action="{{ route('admin.branch.customer',$branch) }}" class="form-inline float-right">
                         @csrf
                         <div class="form-group">
                             &nbsp;<input type="text" class="form-control" name="search" placeholder="search" value="{{request()->search}}">

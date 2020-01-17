@@ -19,20 +19,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($courierTypeList as $courierType)
+                    @foreach($colisTypeList as $colisType)
                     <tr>
-                        <td>{{ $courierType->name }}</td>
-                        <td>{{ $courierType->unit->name }}</td>
-                        <td>{{ $courierType->price }}</td>
+                        <td>{{ $colisType->name }}</td>
+                        <td>{{ $colisType->unit->name }}</td>
+                        <td>{{ $colisType->price }}</td>
                         <td>
-                            @if($courierType->status  == 'Active')
+                            @if($colisType->status  == 'Active')
                             <span class="badge badge-success">{{__('Active')}}</span>
                             @else
                             <span class="badge badge-danger">{{__('Inactive')}}</span>
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('type.edit',$courierType->id) }}"><button class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> {{__('EDIT')}}</button></a>                           
+                            <a href="{{ route('type.edit',$colisType->id) }}"><button class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i> {{__('EDIT')}}</button></a>                           
                         </td> 
                     </tr>
                     @endforeach
@@ -42,8 +42,8 @@
     </div>
 </div>
 <script type="text/javascript">
-    $("#courierSetting").addClass("show");
-    $("#courierSetting li:nth-child(2)").addClass("active");
+    $("#colisSetting").addClass("show");
+    $("#colisSetting li:nth-child(2)").addClass("active");
     $(document).ready(function () {
         $('#table').DataTable();
     });

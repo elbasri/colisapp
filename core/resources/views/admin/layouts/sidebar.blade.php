@@ -12,10 +12,10 @@
             </ul>
         </li>
         <li>
-            <a href="#courierSetting" data-toggle="collapse">
-                <i class="fa fa-fw fa-cog"></i> {{__('Courier Setting')}}
+            <a href="#colisSetting" data-toggle="collapse">
+                <i class="fa fa-fw fa-cog"></i> {{__('Colis Setting')}}
             </a>
-            <ul id="courierSetting" class="list-unstyled collapse">
+            <ul id="colisSetting" class="list-unstyled collapse">
                 <li><a href="{{ route('unit.index') }}"><i class="far fa-circle"></i>&nbsp;{{__('Manage Unit')}}</a></li>
                 <li><a href="{{ route('type.index') }}"><i class="far fa-circle"></i>&nbsp;{{__('Manage Type')}}</a></li>
             </ul>
@@ -49,12 +49,12 @@
                 <li><a href="{{ route('frontend.social') }}"><i class="far fa-circle"></i>&nbsp;{{__('Social Link')}}</a></li>
                 <li><a href="{{ route('frontend.background') }}"><i class="far fa-circle"></i>&nbsp;{{__('Background Image')}}</a></li>
                 <li><a href="{{ route('frontend.headertext') }}"><i class="far fa-circle"></i> {{__('Banner Text')}}</a></li>
-                <li><a href="{{ route('frontend.curriercount') }}"><i class="far fa-circle"></i> {{__('Courier Count Info')}}</a></li>
+                <li><a href="{{ route('frontend.coliscount') }}"><i class="far fa-circle"></i> {{__('Colis Count Info')}}</a></li>
                 <li><a href="{{ route('frontend.services') }}"><i class="far fa-circle"></i> {{__('Service Setting')}}</a></li>
                 <li><a href="{{ route('frontend.prices') }}"><i class="far fa-circle"></i> {{__('Prices List')}}</a></li>
                 <li><a href="{{ route('frontend.aboutus') }}"><i class="far fa-circle"></i> {{__('About Us')}}</a></li>
                 <li><a href="{{ route('frontend.contactus') }}"><i class="far fa-circle"></i> {{__('Contact')}}</a></li>
-                <li><a href="{{ route('frontend.searchcurrier') }}"><i class="far fa-circle"></i> {{__('Search Courier')}}</a></li>
+                <li><a href="{{ route('frontend.searchcolis') }}"><i class="far fa-circle"></i> {{__('Search Colis')}}</a></li>
                 <li><a href="{{ route('frontend.footer') }}"><i class="far fa-circle"></i> {{__('Footer')}}</a></li>
                 <li><a href="{{ route('frontend.faq') }}"><i class="far fa-circle"></i> {{__('Faq')}}</a></li>
             </ul>

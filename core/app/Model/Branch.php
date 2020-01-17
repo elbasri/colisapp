@@ -15,8 +15,8 @@ class Branch extends Model {
         return $this->hasMany(User::class);
     }
 
-    public function currier_infos() {
-        return $this->hasMany(CurrierInfo::class);
+    public function colis_infos() {
+        return $this->hasMany(ColisInfo::class);
     }
 
 }

@@ -21,21 +21,21 @@
 <!-- Welcome Area End -->
 
 <!-- Qurrier Search Section Start -->
-<section id="currier-search" class="yogaclasses">
+<section id="colis-search" class="yogaclasses">
     <div class="container">
         <div class="row justify-content-center mb-4 pb-4">
             <div class="col-md-10 col-xl-8">
                 <div class="sectionTheading">
                     <h2>
-                        {{ $gs->search_currier_title }}
+                        {{ $gs->search_colis_title }}
                     </h2>
                     <p>
-                        {{ $gs->search_currier_details }}
+                        {{ $gs->search_colis_details }}
                     </p>
                 </div>
             </div>
         </div>
-        <form action="{{ route('search.currier') }}" method="POST">
+        <form action="{{ route('search.colis') }}" method="POST">
             @csrf
             <div class="row SelectArea">
                 <div class="col-md-6 col-lg-6 offset-1 offset-md-1">
@@ -45,7 +45,7 @@
                                 <i class="fa fa-truck" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input type="text" name="currier_invoice" class="form-control form-control-lg invoice-search" aria-describedby="basic-addon1" value="{{request()->currier_invoice}}" placeholder="{{__('Enter Parcel Code/Invoice')}}">
+                        <input type="text" name="colis_invoice" class="form-control form-control-lg invoice-search" aria-describedby="basic-addon1" value="{{request()->colis_invoice}}" placeholder="{{__('Enter Parcel Code/Invoice')}}">
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-4 d-flex align-self-end">
@@ -55,13 +55,13 @@
                 </div>
             </div>
         </form>
-        @if(!empty(Session::get('currierInfo')))
+        @if(!empty(Session::get('colisInfo')))
         @php
-        $list = Session::get('currierInfo')
+        $list = Session::get('colisInfo')
         @endphp
         <div class="col-md-10 col-lg-10 offset-1 p-0">
             <div class="table-responsive table-bordered">
-                <table class="table currier-result">
+                <table class="table colis-result">
                     <thead>
                         <tr>
                             <th>{{__('Invoice No')}}</th>
@@ -114,7 +114,7 @@
 </section>
 <!-- Qurrier Search Section End -->
 <!-- service page content area start-->
-<section class="faq-page-content-area service-currier">
+<section class="faq-page-content-area service-colis">
     <div class="container">
         <div class="row justify-content-center mb-4 pb-4">
             <div class="col-md-10 col-xl-8">
@@ -149,7 +149,7 @@
 <!-- service page content area end -->
 
 <!-- price page content area start-->
-<section class="faq-page-content-area service-currier">
+<section class="faq-page-content-area service-colis">
     <div class="container">
         <div class="row justify-content-center mb-4 pb-4">
             <div class="col-md-10 col-xl-8">
@@ -188,13 +188,13 @@
         <div class="row">
             <div class="col-md-6 col-lg-4">
                 <div class="c-box">
-                    <p class="count">{{ $gs->departure_currier }}</p><span>+</span>
+                    <p class="count">{{ $gs->departure_colis }}</p><span>+</span>
                     <h3>{{__('Parcels Departure')}}</h3>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="c-box">
-                    <p class="count">{{ $gs->upcoming_currier }}</p><span>+</span>
+                    <p class="count">{{ $gs->upcoming_colis }}</p><span>+</span>
                     <h3>{{__('Upcoming Parcels')}}</h3>
                 </div>
             </div>
@@ -215,7 +215,7 @@
             $("#replace").addClass("active");
             @endif
 
-            if (window.location.hash == "#currier-search") {
+            if (window.location.hash == "#colis-search") {
     $(".nav-link").removeClass("active");
             $("#qurrierSearch").addClass("active");
     }

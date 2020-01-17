@@ -24,7 +24,7 @@
                         <td>{{ $key+1 }}</td>
                         <td>{{ $branchIncome->payment_date }}</td>
                         <td>{{ $branchIncome->total_balance }}&nbsp;{{ $gs->base_currency }}</td>
-                         <td><a href="{{ route('manager.branch.income.staff',$branchIncome->payment_receiver_id) }}">{{ $branchIncome->payment_receiver->name }} [ {{ $branchIncome->payment_receiver->type }} ]</a></td>
+                         <td><a href="{{ route('manager.branch.income.customer',$branchIncome->payment_receiver_id) }}">{{ $branchIncome->payment_receiver->name }} [ {{ $branchIncome->payment_receiver->type }} ]</a></td>
                     </tr>
                     @empty
                     <tr>

@@ -34,7 +34,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    $("#courierSetting").addClass("show");
-    $("#courierSetting li:nth-child(1)").addClass("active");
+    $("#colisSetting").addClass("show");
+    $("#colisSetting li:nth-child(1)").addClass("active");
 </script>
 @endsection

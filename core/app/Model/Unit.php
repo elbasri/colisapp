@@ -3,7 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\CourierType;
+use App\Model\ColisType;
 
 class Unit extends Model {
 
@@ -11,8 +11,8 @@ class Unit extends Model {
     // table fields
     protected $guarded = [];
 
-    public function couriertypes() {
-        return $this->hasMany(CourierType::class);
+    public function colistypes() {
+        return $this->hasMany(ColisType::class);
     }
 
 }

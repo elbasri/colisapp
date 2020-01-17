@@ -13,8 +13,8 @@
                             </div>
                         </div>
                         <div class="flex-grow-1 bg-white p-4">
-                            <p class="text-uppercase text-secondary mb-0">{{__('Total Branch Staff')}}</p>
-                            <h3 class="font-weight-bold mb-0">{{ $totalStaff }}</h3>
+                            <p class="text-uppercase text-secondary mb-0">{{__('Total Branch Customer')}}</p>
+                            <h3 class="font-weight-bold mb-0">{{ $totalCustomer }}</h3>
                         </div>
                     </div>
                 </div>
@@ -26,8 +26,8 @@
                             </div>
                         </div>
                         <div class="flex-grow-1 bg-white p-4">
-                            <p class="text-uppercase text-secondary mb-0">{{__('Total Departure Courier')}}</p>
-                            <h3 class="font-weight-bold mb-0">{{ $totalDepartureCurrierInfo }}</h3>
+                            <p class="text-uppercase text-secondary mb-0">{{__('Total Departure Colis')}}</p>
+                            <h3 class="font-weight-bold mb-0">{{ $totalDepartureColisInfo }}</h3>
                         </div>
                     </div>
                 </div>
@@ -39,8 +39,8 @@
                             </div>
                         </div>
                         <div class="flex-grow-1 bg-white p-4">
-                            <p class="text-uppercase text-secondary mb-0">{{__('Total Upcoming Courier')}}</p>
-                            <h3 class="font-weight-bold mb-0">{{ $totalUpcomingCurrierInfo }}</h3>
+                            <p class="text-uppercase text-secondary mb-0">{{__('Total Upcoming Colis')}}</p>
+                            <h3 class="font-weight-bold mb-0">{{ $totalUpcomingColisInfo }}</h3>
                         </div>
                     </div>
                 </div>

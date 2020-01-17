@@ -14,7 +14,7 @@ class UserController extends Controller {
         $searchtext = $request->search;
 
         if (!empty($searchtext)) {
-            $userList = User::where([['branch_id', $branch],['type','Staff']])
+            $userList = User::where([['branch_id', $branch],['type','Customer']])
                     ->where(function($q) use($searchtext) {
                         $q->orWhere('name', 'LIKE', "%$searchtext%")
                         ->orWhere('email', 'LIKE', "%$searchtext%")
@@ -22,7 +22,7 @@ class UserController extends Controller {
                     })
                     ->paginate(20);
         } else {
-            $userList = User::where([['branch_id', $branch],['type','Staff']])->paginate(20);
+            $userList = User::where([['branch_id', $branch],['type','Customer']])->paginate(20);
         }
 
         return view('admin.user.list', compact('userList','branch'));

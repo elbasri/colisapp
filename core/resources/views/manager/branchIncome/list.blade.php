@@ -21,15 +21,15 @@
                             <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>{{__('View Branch Income')}}</button>
                         </div>
                         <div class="form-group mb-1 ml-4">
-                            <select class="form-control" name="staff_id">
+                            <select class="form-control" name="customer_id">
                                 <option value="">{{__('All')}}</option>
-                                @foreach($branchStaff as $staff)
-                                <option value="{{ $staff->id }}" {{ request()->staff_id==$staff->id ? 'selected' : '' }}>{{ $staff->name }}</option>
+                                @foreach($branchCustomer as $customer)
+                                <option value="{{ $customer->id }}" {{ request()->customer_id==$customer->id ? 'selected' : '' }}>{{ $customer->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group mb-1">
-                            <button type="submit" class="btn btn-primary">{{__('Choose Staff')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('Choose Customer')}}</button>
                         </div>
                     </form>
                 </div>

@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Intervention\Image\Facades\Image;
 use App\Model\Branch;
-use App\Model\CurrierInfo;
+use App\Model\ColisInfo;
 use Carbon\Carbon;
 
 class AdminController extends Controller {
@@ -31,14 +31,14 @@ class AdminController extends Controller {
         $user = User::all();
         $totalBranch = Branch::count();
         $totalManager = User::where([['type', 'Manager'], ['status', 'Active']])->count();
-        $totalCompanyIncome = CurrierInfo::where('payment_status','Paid')->sum('payment_balance'); 
+        $totalCompanyIncome = ColisInfo::where('payment_status','Paid')->sum('payment_balance'); 
         $total_chart = $this->chartData();
         return view('admin/dashboard', compact('user', 'totalBranch', 'totalManager', 'totalCompanyIncome', 'total_chart'));
     }
 
     public function chartData() {
 
-        $companyIncomeStatistics = CurrierInfo::whereYear('created_at', '=', date('Y'))->where('payment_status', 'Paid')->get()->groupBy(function($d) {
+        $companyIncomeStatistics = ColisInfo::whereYear('created_at', '=', date('Y'))->where('payment_status', 'Paid')->get()->groupBy(function($d) {
             return $d->created_at->format('F');
         });
 

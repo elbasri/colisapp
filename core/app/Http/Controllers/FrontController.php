@@ -7,7 +7,7 @@ use App\Model\GeneralSetting;
 use App\Model\VisitorMessage;
 use Illuminate\Http\Request;
 use App\Model\GalleryImage;
-use App\Model\CurrierInfo;
+use App\Model\ColisInfo;
 use Illuminate\Support\Facades\Session;
 use App\Model\Service;
 use App\Model\Price;
@@ -56,11 +56,11 @@ class FrontController extends Controller {
         return redirect()->route('front.contactus', ["#contactustest"])->withSuccess("Thanks for your message");
     }
 
-    public function searchCurrier(Request $request) {
+    public function searchColis(Request $request) {
 
-        $currier_invoice = $request->get('currier_invoice');
-        $currierInfo = CurrierInfo::where('invoice_id', $currier_invoice)->orWhere('code',$currier_invoice)->first();
-        return redirect()->route('front.index', ["#currier-search"])->with('currierInfo', $currierInfo);
+        $colis_invoice = $request->get('colis_invoice');
+        $colisInfo = ColisInfo::where('invoice_id', $colis_invoice)->orWhere('code',$colis_invoice)->first();
+        return redirect()->route('front.index', ["#colis-search"])->with('colisInfo', $colisInfo);
         
     }
 

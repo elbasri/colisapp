@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\User;
-use App\Model\CurrierInfo;
+use App\Model\ColisInfo;
 use Carbon\Carbon;
 
 class HomeController extends Controller {
@@ -31,16 +31,16 @@ class HomeController extends Controller {
                 return redirect()->intended('manager')->with('error', 'You are not allowed to visit this page...');
             }
             
-        $totalStaff = User::where([['type', 'Staff'], ['branch_id', Auth::user()->branch_id]])->count();
-        $totalDepartureCurrierInfo = CurrierInfo::where('sender_branch_id', Auth::user()->branch_id)->count();
-        $totalUpcomingCurrierInfo = CurrierInfo::where('receiver_branch_id', Auth::user()->branch_id)->count();
+        $totalCustomer = User::where([['type', 'Customer'], ['branch_id', Auth::user()->branch_id]])->count();
+        $totalDepartureColisInfo = ColisInfo::where('sender_branch_id', Auth::user()->branch_id)->count();
+        $totalUpcomingColisInfo = ColisInfo::where('receiver_branch_id', Auth::user()->branch_id)->count();
         $total_chart = $this->chartData();
-        return view('manager/dashboard', compact('totalStaff', 'totalDepartureCurrierInfo', 'totalUpcomingCurrierInfo', 'total_chart'));
+        return view('manager/dashboard', compact('totalCustomer', 'totalDepartureColisInfo', 'totalUpcomingColisInfo', 'total_chart'));
     }
 
     public function chartData() {
 
-        $companyIncomeStatistics = CurrierInfo::whereYear('created_at', '=', date('Y'))->where([['status', 'Delivered'], ['payment_branch_id', Auth::user()->branch_id]])->get()->groupBy(function($d) {
+        $companyIncomeStatistics = ColisInfo::whereYear('created_at', '=', date('Y'))->where([['status', 'Delivered'], ['payment_branch_id', Auth::user()->branch_id]])->get()->groupBy(function($d) {
             return $d->created_at->format('F');
         });
 
