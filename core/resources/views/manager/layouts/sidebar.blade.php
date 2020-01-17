@@ -27,8 +27,8 @@
                 <i class="fa fa-fw fas fa-user"></i>{{__('Driver')}} 
             </a>
             <ul id="zz" class="list-unstyled collapse">
-                <li><a href="{{ route('drivers.list') }}"><i class="far fa-circle"></i> {{__('Drivers List')}}</a></li>
-                <li><a href="{{ route('drivers.create') }}"><i class="far fa-circle"></i> {{__('Create New Driver')}}</a></li>
+                <li><a href="#{{ route('drivers.list') }}"><i class="far fa-circle"></i> {{__('Drivers List')}} (encours)</a></li>
+                <li><a href="#{{ route('drivers.create') }}"><i class="far fa-circle"></i> {{__('Create New Driver')}} (encours)</a></li>
             </ul>
         </li>
     </ul>
