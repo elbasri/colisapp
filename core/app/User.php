@@ -7,7 +7,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Model\Branch;
 
-class User extends Authenticatable {
+use Tymon\JWTAuth\Contracts\JWTSubject;
+
+
+class User extends Authenticatable implements JWTSubject {
 
     use Notifiable;
 
@@ -32,5 +35,21 @@ class User extends Authenticatable {
     public function branch() {
         return $this->belongsTo(Branch::class);
     }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+    // public function setPasswordAttribute($password)
+    // {
+    //     if ( !empty($password) ) {
+    //         $this->attributes['password'] = bcrypt($password);
+    //     }
+    // }   
 
 }

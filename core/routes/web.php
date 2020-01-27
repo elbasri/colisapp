@@ -168,11 +168,13 @@ Route::group(['middleware' => 'CacheRemover'], function() {
 
     Route::group(['middleware' => 'manager', 'prefix' => 'manager', 'namespace' => 'Manager'], function () {
 
-
-        Route::get('drivers/list', 'ManagerController@driverList')->name('drivers.list');
-        Route::get('drivers/create', 'ManagerController@driverCreateForm')->name('drivers.create');
-        Route::post('drivers/create', 'ManagerController@driverCreate')->name('drivers.store');
-        Route::get('drivers/changePassword', 'ManagerController@driverChangePassword')->name('driver.changepassword');
+        Route::resource('drivers', 'DriverController');
+  
+        // Route::get('drivers', 'DriverController@index')->name('drivers.list');
+        // Route::get('drivers/list', 'DriverController@index')->name('drivers.list');
+        // Route::get('drivers/create', 'DriverController@create')->name('drivers.create');
+        // Route::post('drivers/create', 'DriverController@store')->name('drivers.store');
+        // Route::get('drivers/changePassword', 'ManagerController@driverChangePassword')->name('driver.changepassword');
 
 
         //user profile & credentials routes
@@ -185,6 +187,8 @@ Route::group(['middleware' => 'CacheRemover'], function() {
         //all branch customer route list
         Route::resource('branchcustomer', 'BranchCustomerController');
         Route::post('branchcustomer/changepassword', 'BranchCustomerController@changePassword')->name('branchcustomer.changepassword');
+      
+        // Route::post('drivers/changepassword', 'DriverController@changePassword')->name('branchcustomer.changepassword');
 
         //Departure & Upcoming colis info route list
         Route::get('departure/colis', 'ColisInfoController@departureBranchColisList')->name('departure.manager');

@@ -1,16 +1,16 @@
 @extends('manager.layouts.master')
 @section('content')
 <div class="content p-4">
-    <h2 class="mb-4" style="text-transform: uppercase;">{{__('All Drivers')}}
-        <a href="{{ route('drivers.create') }}" class="btn btn-primary btn-md float-right">
-            <i class="fa fa-list"></i>{{__('Add Driver')}}   
+    <h2 class="mb-4" style="text-transform: uppercase;">{{__('All Branch Customer')}}
+        <a href="{{ route('driver.create') }}" class="btn btn-primary btn-md float-right">
+            <i class="fa fa-list"></i>{{__('Add Branch Customer')}}  
         </a>
     </h2>
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12  mb-2">
-                    <form method="GET" action="{{ route('drivers.list') }}" class="form-inline float-right">
+                    <form method="GET" action="{{ route('driver.index') }}" class="form-inline float-right">
                         @csrf
                         <div class="form-group">
                             &nbsp;<input type="text" class="form-control" name="search" placeholder="search" value="{{request()->search}}">
@@ -26,31 +26,38 @@
                         <th>{{__('Name')}}</th>
                         <th>{{__('Email')}}</th>
                         <th>{{__('Phone')}}</th>
-                        <th>{{__('Address')}}</th>
+                        <th>{{__('Branch')}}</th>
+                        <th>{{__('Status')}}</th>
                         <th>{{__('Action')}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($drivers as $key=>$branchCustomer)
+                    @forelse($driverList as $key=>$branchCustomer)
                     <tr>
                         <td>{{ $key+1 }}</td>
-                        <td>{{ $branchCustomer->name }}</td>                       
-                        <td>{{ $branchCustomer->email }}</td>
-                        <td>{{ $branchCustomer->phone }}</td>
-                        <td>{{ $branchCustomer->address }}</td>
-                   
+                        <td>{{ $branchdriver->name }}</td>                       
+                        <td>{{ $branchdriver->email }}</td>
+                        <td>{{ $branchdriver->phone }}</td>
+                        <td>{{ $branchdriver->branch->name }}</td>
                         <td>
-                            <a href="{{ route('branchcustomer.edit',$branchCustomer->id) }}"><button class="btn btn-info btn-sm"> <i class="fa fa-edit"></i>{{__('EDIT')}} </button></a>
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#changePassword{{ $branchCustomer->id }}">
+                            @if($branchdriver->status  == 'Active')
+                            <span class="badge badge-success">{{__('Active')}}</span>
+                            @else
+                            <span class="badge badge-danger">{{__('Inactive')}}</span>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('driver.edit',$branchdriver->id) }}"><button class="btn btn-info btn-sm"> <i class="fa fa-edit"></i>{{__('EDIT')}} </button></a>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#changePassword{{ $branchdriver->id }}">
                                 <i class="fa fa-edit"></i>{{__('Change Password')}}  
                             </button>
-                            <div class="modal fade" id="changePassword{{ $branchCustomer->id }}" role="dialog" aria-labelledby="#changePassword" aria-hidden="true">
+                            <div class="modal fade" id="changePassword{{ $branchdriver->id }}" role="dialog" aria-labelledby="#changePassword" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <form method="POST" action="{{ route('driver.changepassword') }}">
                                             @csrf
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="changePassword{{ $branchCustomer->id }}"><i class="fa fa-edit"></i>&nbsp;{{__('Change Manager Password')}} !</h5>
+                                                <h5 class="modal-title" id="changePassword{{ $branchdriver->id }}"><i class="fa fa-edit"></i>&nbsp;{{__('Change Manager Password')}} !</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -60,7 +67,7 @@
                                                     <div class="form-group">
                                                         <label for="newword" class="text-uppercase"><strong>{{__('New Password')}}</strong></label>
                                                         <input type="password" class="form-control form-control-lg mb-3" id="newword" name="newword" placeholder="New Password">
-                                                        <input type="hidden" name="id" value="{{ $branchCustomer->id }}">
+                                                        <input type="hidden" name="id" value="{{ $branchdriver->id }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12  container-fluid">
@@ -68,7 +75,6 @@
                                                         <label for="newword_confirmation" class="text-uppercase"><strong>{{__('Re-type Password')}}</strong></label>
                                                         <input type="password" class="form-control form-control-lg mb-3"  id="newword_confirmation" name="newword_confirmation" placeholder="Enter Password Again">
                                                     </div>
-                                                    <input type="hidden" name="driver" value="{{$branchCustomer->id }}"
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -88,12 +94,12 @@
                     @endforelse
                 </tbody>
             </table>
-            {{ $drivers->appends(['search'=>request()->search])->links() }}
+            {{ $driverList->appends(['search'=>request()->search])->links() }}
         </div>
     </div>
 </div>
 <script type="text/javascript">
-    $("#zz").addClass("show");
-    $("#zz li:nth-child(1)").addClass("active");
+    $("#branchDriver").addClass("show");
+    $("#branchDriver li:nth-child(2)").addClass("active");
 </script>
 @endsection

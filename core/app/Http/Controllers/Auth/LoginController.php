@@ -49,6 +49,44 @@ class LoginController extends Controller
     {
         return 'name';
     }
+
+    public function loginApi()
+    {
+        $credentials = request(['email', 'password']);
+
+
+        if ($token = auth('api')->attempt($credentials)) {
+            
+              
+
+            $user = \App\User::where([ ["email", "=" , $credentials["email"] ] , ['type', "=" , 'Driver'] ])->first();
+
+          //  dd($user);
+
+            if($user != null){
+                return $this->respondWithToken($token);
+            }
+
+            return response()->json(['error' => 'Unauthorized Profile'], 401);
+
+
+        }
+
+        return response()->json(['error' => 'Unauthorized'], 401);
+
+    }
+
+
+
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type'   => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+
+            ]);
+    }
     
    
     

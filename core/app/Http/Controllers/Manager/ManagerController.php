@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Input;
 use App\User;
 use Intervention\Image\Facades\Image;
 use App\Model\Branch;
-use App\Model\Driver;
 
 class ManagerController extends Controller {
 
@@ -131,42 +130,6 @@ class ManagerController extends Controller {
         return view('manager.allbranch', compact('branchList'));
     }
 
-    public function driverCreateForm() {
-        
-        return view('manager.drivers.add');
-    
-
-    }
-
-    public function driverCreate(Request $request, Driver $driver) {
-
-        $data = $request->all();
-        $driver->create($data);
-
-        return back()->withSuccess('driver created successfully');
-        
-    }
-
-    public function driverList(Request $request) {
-
-        
-        $searchtext = $request->search;
-        if (!empty($searchtext)) {
-            $drivers = Driver::where(function($q) use($searchtext) {
-                        $q->orWhere('name', 'LIKE', "%$searchtext%")
-                        ->orWhere('email', 'LIKE', "%$searchtext%")
-                        ->orWhere('phone', 'LIKE', "%$searchtext%");
-                    })
-                    ->paginate(20);
-        } else {
-            $drivers = Driver::paginate(20);
-        }
-        
-        return view('manager.drivers.list',compact("drivers"));
-        
-    }
-
-
-
+ 
 }
     
